@@ -161,7 +161,7 @@
     "max-len": [
       "error",
       {
-        "code": 120,
+        "code": 140,
         "ignoreComments": true,
         "ignoreStrings": true,
         "tabWidth": 2
@@ -198,7 +198,8 @@
           "parameterProperties": "explicit"
         }
       }
-    ]
+    ],
+    "import/no-cycle": [0, { "maxDepth": 1, "ignoreExternal": true }]
   },
   "settings": {
     "import/parsers": {

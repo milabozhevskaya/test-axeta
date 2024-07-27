@@ -22,6 +22,6 @@ export const Button: FC<ButtonProps> = ({
     onClick={onClick}
     disabled={disabled}
   >
-    <span className={styles.button__text}>{children}</span>
+    {children}
   </button>
 );

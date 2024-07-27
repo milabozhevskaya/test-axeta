@@ -5,3 +5,5 @@ export * from "./section/Section";
 export * from "./button/Button";
 export * from "./subtitle/Subtitle";
 export * from "./image/Img";
+export * from "./text-input/TextInput";
+export * from "./number-input/NumberInput";
