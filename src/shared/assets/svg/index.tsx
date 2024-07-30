@@ -4,6 +4,8 @@ import Check from "./check.source.svg";
 import Close from "./close.source.svg";
 import Logo from "./logo.source.svg";
 import Print from "./print.source.svg";
+import Quote from "./quote.source.svg";
+import Reload from "./reload.source.svg";
 import Union from "./union.source.svg";
 
 type SVGSelectorProps = {
@@ -23,6 +25,10 @@ export const SVGSelector: FC<SVGSelectorProps> = ({ name, styles }) => {
       return <Union className={styles} />;
     case "print":
       return <Print className={styles} />;
+    case "reload":
+      return <Reload className={styles} />;
+    case "quote":
+      return <Quote className={styles} />;
     default:
       return <svg className={styles}></svg>;
   }

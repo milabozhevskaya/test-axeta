@@ -1,0 +1,71 @@
+@import "./variables";
+
+:root {
+  --html-background: var(--white);
+
+  --header-background: transparent;
+
+  --subtitle-color: var(--black);
+
+  --head-background: var(--grey-light);
+  --head-color: var(--black);
+
+  --avatar-background: var(--grey-lighter);
+  --avatar-border: var(--white);
+  --avatar-button-background: var(--blue);
+
+  --text-input-background: transparent;
+  --text-input-border: transparent;
+  --text-input-color: currentColor;
+  --text-input-field-background: transparent;
+  --text-input-message-color: var(--red);
+
+  --text-input-background-hover: var(--grey-middle);
+  --text-input-border-focus: var(--black);
+  --text-input-border-error: var(--red);
+
+  --number-input-background: transparent;
+  --number-input-border: transparent;
+  --number-input-color: var(--blue);
+  --number-input-field-background: transparent;
+  --number-input-field-color: var(--black);
+
+  --number-input-background-hover: var(--grey-middle);
+  --number-input-background-focus: var(--grey-middle);
+  --number-input-border-focus: var(--black);
+  --number-input-color-hover: var(--red-light);
+  --number-input-color-focus: var(--black);
+
+  --skills-add-button-background: var(--dark);
+  --skills-input-color: var(--black);
+
+  --skills-add-button-background-hover: var(--grey);
+
+  --skill-button-background: var(--dark);
+  --skill-button-color: var(--white);
+
+  --skill-button-background-hover: var(--grey);
+
+  --print-color: var(--blue);
+  --print-icon-fill: var(--light);
+
+  --print-color-hover: var(--red-light);
+  --print-icon-fill-hover: var(--red-light);
+
+  --details-background: transparent;
+
+  --portfolio-bullet-color: var(--black);
+  --portfolio-link-color: var(--blue);
+
+  --portfolio-link-color-hover: var(--red-light);
+
+  --experience-bullet-color: var(--black);
+  --experience-name-color: var(--black);
+
+  --code-simple-background: var(--grey-light);
+  --code-simple-line-number-color: var(--black50);
+
+  --phrase-quote-fill: var(--light20);
+
+  --footer-background: transparent;
+}

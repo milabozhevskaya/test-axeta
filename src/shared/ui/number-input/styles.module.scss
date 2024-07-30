@@ -1,0 +1,58 @@
+@import "styles/mixins";
+
+.input {
+  display: flex;
+  position: relative;
+  background-color: var(--number-input-background);
+  cursor: pointer;
+  transition: 0.4s;
+  color: var(--number-input-color);
+  border-bottom: 1px solid var(--number-input-border);
+  padding-left: 2px;
+
+  &:hover {
+    color: var(--number-input-color-hover);
+    transition: 0.4s;
+  }
+
+  &_focused {
+    background-color: var(--number-input-background-focus);
+    transition: 0.4s;
+    border-bottom: 1px solid var(--number-input-border-focus);
+  }
+
+  &__field {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    height: 100%;
+    width: 100%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    color: var(--number-input-field-color);
+    padding-left: 2px;
+    background-color: var(--number-input-field-background);
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    :focus {
+      outline: none;
+    }
+
+    &_focused {
+      opacity: 1;
+    }
+  }
+
+  &__years {
+    pointer-events: none;
+    opacity: 1;
+
+    &_focused {
+      opacity: 0;
+    }
+  }
+}

@@ -8,26 +8,34 @@ interface NumberInputProps {
 }
 
 export const NumberInput: FC<NumberInputProps> = ({ initial, classes }) => {
-  const [focus, setFocus] = useState(false);
+  const [isFocus, setIsFocus] = useState(false);
 
-  const focusInput = (e: React.FocusEvent<HTMLInputElement>) => {
-    e.target.select();
-    setFocus(true);
+  const focusInput = () => {
+    console.log("focus");
+    setIsFocus(true);
+  };
+
+  const unFocusInput = () => {
+    setIsFocus(false);
   };
 
   return (
-    <div className={`${styles.input} ${classes} ${focus && styles.focus}`}>
+    <div
+      className={`${styles.input} ${classes} ${isFocus && styles.input_focused}`}
+      onClick={focusInput}
+    >
       <input
         type="number"
         defaultValue={initial}
-        className={styles.input__field}
-        onFocus={focusInput}
+        className={`${styles.input__field} ${isFocus && styles.input__field_focused}`}
+        autoFocus={isFocus}
+        onBlur={unFocusInput}
       />
-      {!focus && (
-        <span className={styles.input__years}>
-          {initial >= 2 ? "years" : "year"}
-        </span>
-      )}
+      <span
+        className={`${styles.input__years} ${isFocus && styles.input__years_focused}`}
+      >
+        {initial} {initial >= 2 ? "years" : "year"}
+      </span>
     </div>
   );
 };

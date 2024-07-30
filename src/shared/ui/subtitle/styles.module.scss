@@ -1,3 +1,7 @@
+@import "styles/mixins";
+
 .subtitle {
   user-select: none;
+  @include font(500, 24px, 1);
+  color: var(--subtitle-color);
 }

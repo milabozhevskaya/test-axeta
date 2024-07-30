@@ -223,6 +223,7 @@
           ["types", "./src/shared/types"],
           ["utils", "./src/shared/utils"],
           ["styles", "./src/shared/styles"],
+          ["fonts", "./src/shared/fonts"],
           ["shared", "./src/shared"],
           ["widgets", "./src/widgets"],
           ["data", ".src/data"]

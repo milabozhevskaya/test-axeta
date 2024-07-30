@@ -1,9 +1,8 @@
 .image {
   display: block;
-  position: relative;
   overflow: hidden;
 
-  .pic {
+  &__pic {
     display: block;
     position: relative;
     object-fit: cover;

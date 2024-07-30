@@ -9,4 +9,24 @@
 .main {
   display: flex;
   flex-grow: 1;
+  flex-direction: column;
+  width: 100%;
+}
+
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--header-background);
+  z-index: 100;
+}
+
+.footer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--footer-background);
+  z-index: 100;
 }

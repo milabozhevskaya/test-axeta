@@ -1,4 +1,4 @@
-import type { FC } from "react";
+import { useState, type FC } from "react";
 
 import styles from "./styles.module.scss";
 
@@ -8,13 +8,35 @@ interface SkillProps {
   skill: string;
 }
 
-export const Skill: FC<SkillProps> = ({ skill }) => (
-  <div className={styles.skill}>
-    <Button type="button" classes={styles.skill__button}>
-      {skill}
-    </Button>
-    <Button type="button" classes={styles.skill__reset}>
-      <Icon name="reset" classes={styles.skill__icon} />
-    </Button>
-  </div>
-);
+export const Skill: FC<SkillProps> = ({ skill }) => {
+  const [isHover, setIsHover] = useState(false);
+
+  const handleMouseEnter = () => {
+    setIsHover(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHover(false);
+  };
+
+  return (
+    <div
+      className={styles.skill}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      <Button
+        type="button"
+        classes={`${styles.skill__button} ${isHover && styles.skill__button_hover}`}
+      >
+        <span>{skill}</span>
+      </Button>
+
+      {isHover && (
+        <Button type="button" classes={styles.skill__reset}>
+          <Icon name="close" classes={styles.skill__icon} />
+        </Button>
+      )}
+    </div>
+  );
+};

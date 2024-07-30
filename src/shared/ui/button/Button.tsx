@@ -7,6 +7,8 @@ interface ButtonProps extends PropsWithChildren {
   disabled?: boolean;
   classes?: string;
   onClick?: () => void;
+  onMouseEnter?: () => void;
+  onMouseLeave?: () => void;
 }
 
 export const Button: FC<ButtonProps> = ({
@@ -14,12 +16,16 @@ export const Button: FC<ButtonProps> = ({
   type,
   classes,
   onClick,
+  onMouseEnter,
+  onMouseLeave,
   disabled = false,
 }) => (
   <button
     className={`${styles.button} ${classes}`}
     type={type}
     onClick={onClick}
+    onMouseEnter={onMouseEnter}
+    onMouseLeave={onMouseLeave}
     disabled={disabled}
   >
     {children}

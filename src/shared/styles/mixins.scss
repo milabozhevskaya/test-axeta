@@ -1,0 +1,14 @@
+@mixin font(
+  $font-weight: 400,
+  $font-size: 16px,
+  $line-height: 150%,
+  $family: "Roboto"
+) {
+  font-family: $family, sans-serif;
+  font-optical-sizing: auto;
+  font-weight: $font-weight;
+  font-style: normal;
+  font-variation-settings: "slnt" 0;
+  font-size: $font-size;
+  line-height: $line-height;
+}

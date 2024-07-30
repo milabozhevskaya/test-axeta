@@ -3,11 +3,11 @@ import styles from "./styles.module.scss";
 import { Avatar, UserForm } from "features";
 
 const user = {
-  name: "John Doe",
+  name: "John Smith",
   location: "123 Main St, Anytown USA",
   avatar: "https://example.com/avatar.jpg",
   language: "English",
-  skills: ["JavaScript", "React", "Node.js"],
+  skills: ["PHP", "Ruby", "Java Script"],
 };
 
 export const Profile = () => (

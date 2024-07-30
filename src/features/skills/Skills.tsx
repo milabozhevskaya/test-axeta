@@ -26,11 +26,13 @@ export const Skills: FC<SkillsProps> = ({ skills }) => {
 
       {!isInput && (
         <Button type="button" classes={styles.skills__add} onClick={setInput}>
-          <Icon name="union" classes={styles.skills__icon} />
+          <Icon name="union" classes={styles.skills__plus} />
         </Button>
       )}
 
-      {isInput && <TextInput initial="" classes={styles.skills__input} />}
+      {isInput && (
+        <TextInput initial="" focused={true} classes={styles.skills__input} />
+      )}
     </div>
   );
 };

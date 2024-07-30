@@ -1,0 +1,40 @@
+@import "styles/mixins";
+
+.skill {
+  display: flex;
+  position: relative;
+  flex-shrink: 0;
+  padding: 0px 8px 0px 0px;
+
+  &__button {
+    display: flex;
+    align-items: center;
+    background-color: var(--skill-button-background);
+    border-radius: 4px;
+    color: var(--skill-button-color);
+    transition: 0.4s;
+    padding: 4px 8px;
+    text-align: center;
+    @include font(400, 14px, 115%);
+
+    &_hover {
+      background-color: var(--skill-button-background-hover);
+      transition: 0.4s;
+    }
+  }
+
+  &__reset {
+    position: absolute;
+    right: 0;
+    top: 0px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    transform: translateY(-50%);
+  }
+
+  &__icon {
+    width: 100%;
+    height: 100%;
+  }
+}

@@ -109,6 +109,7 @@ const config = {
       types: path.resolve(__dirname, "src/shared/types"),
       utils: path.resolve(__dirname, "src/shared/utils"),
       styles: path.resolve(__dirname, "src/shared/styles"),
+      fonts: path.resolve(__dirname, "src/shared/fonts"),
       data: path.resolve(__dirname, "src/data"),
     },
   },
