@@ -68,14 +68,16 @@ h6 {
   margin-inline-end: 0px;
 }
 
-input {
+input,
+textarea {
   border: none;
   outline: none;
   padding: 0px;
   line-height: inherit;
 }
 
-input:focus {
+input:focus,
+textarea:focus {
   outline: none;
   cursor: auto;
 }

@@ -1,16 +1,15 @@
-import { useState, type FC } from "react";
+import { type PropsWithChildren, useState, type FC } from "react";
 
 import styles from "./styles.module.scss";
 
+import { useAppSelector } from "hooks";
 import { Button, Icon, Png } from "shared";
+import type { RootState } from "store";
 
-interface AvatarProps {
-  srcImage: string;
-}
-
-export const Avatar: FC<AvatarProps> = ({ srcImage }) => {
+export const Avatar: FC<PropsWithChildren> = () => {
   const [loading, setLoading] = useState(true);
   const [isHover, setIsHover] = useState(false);
+  const { avatar } = useAppSelector((state: RootState) => state.userSlice);
 
   const showImage = () => {
     setLoading(false);
@@ -32,7 +31,7 @@ export const Avatar: FC<AvatarProps> = ({ srcImage }) => {
     >
       <div className={styles.avatar__wrapper}>
         <img
-          src={srcImage}
+          src={avatar || ""}
           alt="avatar"
           className={`${styles.avatar__photo} ${loading && styles.avatar__hiden}`}
           onLoad={showImage}

@@ -6,9 +6,10 @@ import { Button, Icon } from "shared";
 
 interface SkillProps {
   skill: string;
+  onRemove: (name: string) => void;
 }
 
-export const Skill: FC<SkillProps> = ({ skill }) => {
+export const Skill: FC<SkillProps> = ({ skill, onRemove }) => {
   const [isHover, setIsHover] = useState(false);
 
   const handleMouseEnter = () => {
@@ -17,6 +18,10 @@ export const Skill: FC<SkillProps> = ({ skill }) => {
 
   const handleMouseLeave = () => {
     setIsHover(false);
+  };
+
+  const remove = () => {
+    onRemove(skill);
   };
 
   return (
@@ -33,7 +38,7 @@ export const Skill: FC<SkillProps> = ({ skill }) => {
       </Button>
 
       {isHover && (
-        <Button type="button" classes={styles.skill__reset}>
+        <Button type="button" classes={styles.skill__reset} onClick={remove}>
           <Icon name="close" classes={styles.skill__icon} />
         </Button>
       )}

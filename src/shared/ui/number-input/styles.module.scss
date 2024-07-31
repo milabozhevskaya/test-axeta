@@ -47,9 +47,20 @@
     }
   }
 
+  &__submit {
+    position: absolute;
+    top: 50%;
+    right: 4px;
+    width: 16px;
+    height: 16px;
+    transform: translateY(-50%);
+    z-index: 200;
+  }
+
   &__years {
     pointer-events: none;
     opacity: 1;
+    z-index: 300;
 
     &_focused {
       opacity: 0;

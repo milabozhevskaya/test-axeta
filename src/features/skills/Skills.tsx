@@ -1,16 +1,42 @@
-import { useState, type FC } from "react";
+import { type PropsWithChildren, useState, type FC } from "react";
 
 import styles from "./styles.module.scss";
 
 import { Skill } from "entities";
-import { Button, Icon, TextInput } from "shared";
+import {
+  Button,
+  Icon,
+  MIN_LENGTH_MESSAGE,
+  TextInput,
+  useAppDispatch,
+  useAppSelector,
+  validateSkillInput,
+} from "shared";
+import { setExperience, type RootState } from "store";
 
-interface SkillsProps {
-  skills: Array<string>;
-}
-
-export const Skills: FC<SkillsProps> = ({ skills }) => {
+export const Skills: FC<PropsWithChildren> = () => {
   const [isInput, setIsInput] = useState(false);
+  const { experience } = useAppSelector((state: RootState) => state.userSlice);
+  const dispatch = useAppDispatch();
+
+  const updateExperience = (newExperience: string) => {
+    setIsInput(false);
+
+    if (newExperience.length === 0) {
+      return;
+    }
+
+    if (experience.filter((skill) => skill.name === newExperience).length > 0) {
+      return;
+    }
+
+    dispatch(setExperience([...experience, { name: newExperience, year: 0 }]));
+  };
+
+  const removeExperience = (name: string) => {
+    const updatedExperience = experience.filter((skill) => skill.name !== name);
+    dispatch(setExperience(updatedExperience));
+  };
 
   const setInput = () => {
     setIsInput(true);
@@ -18,11 +44,13 @@ export const Skills: FC<SkillsProps> = ({ skills }) => {
 
   return (
     <div className={styles.skills}>
-      <ul className={styles.skills__list}>
-        {skills.map((skill) => (
-          <Skill key={skill} skill={skill} />
-        ))}
-      </ul>
+      {experience.map((skill) => (
+        <Skill
+          key={skill.name}
+          skill={skill.name}
+          onRemove={removeExperience}
+        />
+      ))}
 
       {!isInput && (
         <Button type="button" classes={styles.skills__add} onClick={setInput}>
@@ -31,7 +59,15 @@ export const Skills: FC<SkillsProps> = ({ skills }) => {
       )}
 
       {isInput && (
-        <TextInput initial="" focused={true} classes={styles.skills__input} />
+        <TextInput
+          initial=""
+          focused={true}
+          classes={styles.skills__input}
+          saveValue={updateExperience}
+          validate={validateSkillInput}
+          message={MIN_LENGTH_MESSAGE}
+          max={18}
+        />
       )}
     </div>
   );

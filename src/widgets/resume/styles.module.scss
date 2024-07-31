@@ -10,11 +10,6 @@
   grid-column-gap: 24px;
   grid-row-gap: 72px;
 
-  &__column {
-    display: flex;
-    flex-direction: column;
-  }
-
   &__column:nth-child(1) {
     grid-area: a;
   }

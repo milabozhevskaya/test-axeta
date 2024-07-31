@@ -7,7 +7,6 @@
   cursor: pointer;
   transition: 0.4s;
   color: var(--text-input-color);
-  width: 100%;
   border-bottom: 1px solid var(--text-input-border);
 
   &:hover {
@@ -21,6 +20,7 @@
     background-color: var(--text-input-field-background);
     border: none;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    min-width: 159px;
 
     &:hover {
       cursor: pointer;
@@ -58,10 +58,12 @@
     display: block;
     position: absolute;
     top: 50%;
-    right: -8px;
+    left: 105%;
     transform: translateY(-50%);
-    color: var(--text-input-message);
+    color: var(--text-input-message-color);
     @include font(400, 14px, calc((20 * 100%) / 14));
+    text-wrap: nowrap;
+    cursor: default;
   }
 
   &_focused {

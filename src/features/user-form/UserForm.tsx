@@ -1,30 +1,55 @@
-import type { FC } from "react";
+import type { FC, PropsWithChildren } from "react";
 
 import styles from "./styles.module.scss";
 
 import { Skills } from "features";
-import { TextInput, Png } from "shared";
+import { useAppSelector, useAppDispatch } from "hooks";
+import {
+  validateLocationInput,
+  TextInput,
+  Png,
+  validateNameInput,
+  ERROR_MESSAGE,
+} from "shared";
+import { type RootState, setLocation, setName } from "store";
 
-interface UserFormProps {
-  name: string;
-  location: string;
-  language: string;
-  skills: Array<string>;
-}
+export const UserForm: FC<PropsWithChildren> = () => {
+  const { name, location, language } = useAppSelector(
+    (state: RootState) => state.userSlice
+  );
+  const dispatch = useAppDispatch();
 
-export const UserForm: FC<UserFormProps> = ({
-  name,
-  location,
-  language,
-  skills,
-}) => (
-  <div className={styles.fields}>
-    <TextInput initial={name} classes={styles.fields__name} />
-    <TextInput initial={location} classes={styles.fields__location} />
-    <div className={styles.fields__language}>
-      <Png name="flag" alt="flag" classes={styles.fields__flag} />
-      <span className={styles.fields__lang}>{language}</span>
+  const setNameValue = (nameValue: string) => {
+    dispatch(setName(nameValue));
+  };
+
+  const setLocationValue = (nameValue: string) => {
+    dispatch(setLocation(nameValue));
+  };
+
+  return (
+    <div className={styles.fields}>
+      <TextInput
+        initial={name}
+        classes={styles.fields__name}
+        validate={validateNameInput}
+        saveValue={setNameValue}
+        message={ERROR_MESSAGE}
+        max={15}
+      />
+      <TextInput
+        initial={location}
+        classes={styles.fields__location}
+        validate={validateLocationInput}
+        saveValue={setLocationValue}
+        message={ERROR_MESSAGE}
+        max={40}
+      />
+      <div className={styles.fields__language}>
+        <Png name="flag" alt="flag" classes={styles.fields__flag} />
+        <span className={styles.fields__lang}>{language}</span>
+      </div>
+      <Skills />
     </div>
-    <Skills skills={skills} />
-  </div>
-);
+  );
+};

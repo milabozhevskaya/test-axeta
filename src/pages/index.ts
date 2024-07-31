@@ -1,1 +1,1 @@
-export * from "./account/AccountPage";
+export * from "./account";

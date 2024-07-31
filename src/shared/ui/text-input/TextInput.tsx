@@ -7,23 +7,59 @@ import { Button, Icon } from "shared";
 interface TextInputProps {
   initial: string;
   classes?: string;
+  validate?: (a: string) => boolean;
+  saveValue: (val: string) => void;
   focused?: boolean;
+  message: string;
+  max?: number;
 }
 
 export const TextInput: FC<TextInputProps> = ({
   initial,
   classes,
+  validate,
+  saveValue,
   focused = false,
+  message,
+  max,
 }) => {
+  const [inputValue, setInputValue] = useState(initial);
   const [isFocus, setIsFocus] = useState(focused);
-  const [isError] = useState(false);
+  const [isError, setIsError] = useState(false);
 
   const focusInput = () => {
+    if (isFocus) {
+      return;
+    }
+
     setIsFocus(true);
   };
 
   const unFocusInput = () => {
+    if (isError) {
+      setIsError(false);
+      setInputValue(initial);
+    } else {
+      saveValue(inputValue);
+    }
     setIsFocus(false);
+  };
+
+  const onInputEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter" && !isError) {
+      e.currentTarget.blur();
+      unFocusInput();
+    }
+  };
+
+  const changeInputValue = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (validate && !validate(e.currentTarget.value)) {
+      setIsError(true);
+    } else {
+      setIsError(false);
+    }
+
+    setInputValue(e.currentTarget.value);
   };
 
   return (
@@ -32,25 +68,25 @@ export const TextInput: FC<TextInputProps> = ({
     >
       <input
         type="text"
-        defaultValue={initial}
+        value={inputValue}
         className={styles.input__field}
-        autoFocus={focused}
+        autoFocus={isFocus}
         onFocus={focusInput}
-        onBlur={unFocusInput}
+        onChange={changeInputValue}
+        onKeyDown={onInputEnter}
+        maxLength={max}
       />
       {isFocus && !isError && (
-        <Button classes={styles.input__submit}>
+        <Button classes={styles.input__submit} onClick={unFocusInput}>
           <Icon name="check" classes={styles.input__icon} />
         </Button>
       )}
       {isError && (
-        <Button classes={styles.input__reset}>
+        <Button classes={styles.input__reset} onClick={unFocusInput}>
           <Icon name="close" classes={styles.input__icon} />
         </Button>
       )}
-      {isError && (
-        <span className={styles.input__message}>Error Description</span>
-      )}
+      {isError && <span className={styles.input__message}>{message}</span>}
     </div>
   );
 };

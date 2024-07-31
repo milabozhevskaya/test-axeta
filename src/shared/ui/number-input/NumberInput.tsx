@@ -5,18 +5,34 @@ import styles from "./styles.module.scss";
 interface NumberInputProps {
   initial: number;
   classes?: string;
+  updateValue: (newYear: number) => void;
 }
 
-export const NumberInput: FC<NumberInputProps> = ({ initial, classes }) => {
+export const NumberInput: FC<NumberInputProps> = ({
+  initial,
+  classes,
+  updateValue,
+}) => {
   const [isFocus, setIsFocus] = useState(false);
+  const [inputValue, setInputValue] = useState(initial);
 
   const focusInput = () => {
-    console.log("focus");
     setIsFocus(true);
   };
 
   const unFocusInput = () => {
     setIsFocus(false);
+    updateValue(inputValue);
+  };
+
+  const onInputEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      unFocusInput();
+    }
+  };
+
+  const changeValue = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue(Number(e.currentTarget.value));
   };
 
   return (
@@ -26,11 +42,14 @@ export const NumberInput: FC<NumberInputProps> = ({ initial, classes }) => {
     >
       <input
         type="number"
-        defaultValue={initial}
+        value={inputValue.toString()}
         className={`${styles.input__field} ${isFocus && styles.input__field_focused}`}
         autoFocus={isFocus}
+        onChange={changeValue}
         onBlur={unFocusInput}
+        onKeyDown={onInputEnter}
       />
+
       <span
         className={`${styles.input__years} ${isFocus && styles.input__years_focused}`}
       >

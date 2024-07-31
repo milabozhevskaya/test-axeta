@@ -1,4 +1,5 @@
 export * from "./container/Container";
+export * from "./column/Column";
 export * from "./icon/Icon";
 export * from "./logo/Logo";
 export * from "./section/Section";

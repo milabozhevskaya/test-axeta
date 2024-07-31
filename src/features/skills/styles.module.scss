@@ -2,16 +2,16 @@
 
 .skills {
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   width: 100%;
-  align-items: center;
   padding: 4px 0px;
+  row-gap: 10px;
 
   &__list {
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     align-items: center;
-    flex-shrink: 0;
+    row-gap: 10px;
   }
 
   &__add {
@@ -37,6 +37,5 @@
     @include font(400, 14px, 115%);
     color: var(--skills-input-color);
     padding: 4px 2px;
-    width: 100%;
   }
 }
