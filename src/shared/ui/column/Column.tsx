@@ -6,7 +6,7 @@ import { Subtitle } from "shared";
 
 interface ColumnProps extends PropsWithChildren {
   classes: string;
-  title: string;
+  title?: string;
 }
 
 export const Columnn: FC<ColumnProps> = ({ classes, title, children }) => (

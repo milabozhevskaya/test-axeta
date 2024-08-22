@@ -3,14 +3,14 @@ import { docco } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
 import styles from "./styles.module.scss";
 
+import { YndxMap } from "features";
 import { useAppDispatch, useAppSelector } from "hooks";
 import { Columnn, Icon, NumberInput, updateArrOfExperience } from "shared";
 import { setExperience, type RootState } from "store";
 
 export const Resume = () => {
-  const { portfolio, experience, availability, code, phrase } = useAppSelector(
-    (state: RootState) => state.userSlice
-  );
+  const { portfolio, experience, availability, code, phrase, location, address } =
+    useAppSelector((state: RootState) => state.userSlice);
 
   const dispatch = useAppDispatch();
 
@@ -180,6 +180,10 @@ export const Resume = () => {
             svgClasses={styles.phrase__svg}
           />
         </div>
+      </Columnn>
+
+      <Columnn classes={`${styles.resume__column} ${styles.map}`}>
+        <YndxMap classes={styles.resume__column} location={location} address={address} />
       </Columnn>
     </div>
   );

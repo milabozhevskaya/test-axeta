@@ -1,7 +1,8 @@
 export type UserState = {
   name: string;
-  location: string;
+  location: { address: string, coords: Array<number> };
   avatar: string | null;
+  address: string;
   language: string;
   error: string;
   loading: boolean;

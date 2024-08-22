@@ -12,6 +12,8 @@ interface TextInputProps {
   focused?: boolean;
   message: string;
   max?: number;
+  loading?: boolean;
+  error?: string;
 }
 
 export const TextInput: FC<TextInputProps> = ({

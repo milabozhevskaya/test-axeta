@@ -11,10 +11,10 @@ import {
   validateNameInput,
   ERROR_MESSAGE,
 } from "shared";
-import { type RootState, setLocation, setName } from "store";
+import { type RootState, setAddress, setName } from "store";
 
 export const UserForm: FC<PropsWithChildren> = () => {
-  const { name, location, language } = useAppSelector(
+  const { name, address, language, loading, error } = useAppSelector(
     (state: RootState) => state.userSlice
   );
   const dispatch = useAppDispatch();
@@ -24,7 +24,7 @@ export const UserForm: FC<PropsWithChildren> = () => {
   };
 
   const setLocationValue = (nameValue: string) => {
-    dispatch(setLocation(nameValue));
+    dispatch(setAddress(nameValue));
   };
 
   return (
@@ -38,12 +38,14 @@ export const UserForm: FC<PropsWithChildren> = () => {
         max={15}
       />
       <TextInput
-        initial={location}
+        initial={address}
         classes={styles.fields__location}
         validate={validateLocationInput}
         saveValue={setLocationValue}
         message={ERROR_MESSAGE}
         max={40}
+        loading={loading}
+        error={error}
       />
       <div className={styles.fields__language}>
         <Png name="flag" alt="flag" classes={styles.fields__flag} />

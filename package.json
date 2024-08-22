@@ -31,6 +31,7 @@
   },
   "homepage": "https://github.com/milabozhevskaya/test-axeta#readme",
   "dependencies": {
+    "@pbe/react-yandex-maps": "^1.2.5",
     "@reduxjs/toolkit": "^2.2.5",
     "normalize.scss": "^0.1.0",
     "ps-node": "^0.1.6",
